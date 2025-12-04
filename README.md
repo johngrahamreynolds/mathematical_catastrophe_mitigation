@@ -209,7 +209,7 @@ If you use this code or findings in your research, please cite:
 @article{reynolds2024mitigating,
   title={Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training},
   author={Reynolds, John Graham},
-  journal={CS388 Final Project, UT Austin},
+  journal={arXiv preprint},
   year={2024},
   url={https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation}
 }
