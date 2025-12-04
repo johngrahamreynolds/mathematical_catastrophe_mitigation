@@ -1,4 +1,4 @@
-# Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning
+# Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation)
 [![HuggingFace Models](https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow)](https://huggingface.co/MarioBarbeque)
