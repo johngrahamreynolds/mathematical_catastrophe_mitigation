@@ -48,7 +48,7 @@ class DataConfig:
 class TrainConfig:
     """Training configuration."""
     # Core hyperparameters
-    learning_rate: float = 1e-4
+    learning_rate: float = 3e-4
     batch_size: int = 64
     gradient_accumulation_steps: int = 1
     num_epochs: int = 3
