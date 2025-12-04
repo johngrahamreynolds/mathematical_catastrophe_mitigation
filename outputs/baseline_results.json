@@ -1,0 +1,11 @@
+{
+  "experiment": "baseline",
+  "final_metrics": {
+    "math_acc": 0.0312,
+    "math_loss": 1.7241918623447419,
+    "nli_acc": 0.8097809475292919,
+    "nli_loss": 2.6786368504548683
+  },
+  "training_time": 0,
+  "epochs_completed": 0
+}

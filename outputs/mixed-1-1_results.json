@@ -1,0 +1,30 @@
+{
+  "experiment": "mixed-1-1",
+  "config": {
+    "math_ratio": 1,
+    "nli_ratio": 1,
+    "learning_rate": 0.0003,
+    "batch_size": 128,
+    "num_epochs": 3
+  },
+  "final_metrics": {
+    "math_acc": 0.1201,
+    "math_loss": 1.2226855015452904,
+    "nli_acc": 0.8623535404992358,
+    "nli_loss": 0.18770924017026827
+  },
+  "best_model": {
+    "best_metric": "math_acc",
+    "best_value": 0.124,
+    "best_step": 4000
+  },
+  "training_time": 4608.277959108353,
+  "epochs_completed": 3,
+  "total_steps": 9201,
+  "gpu_memory": {
+    "total_gb": 39.55743408203125,
+    "allocated_gb": 2.3614134788513184,
+    "reserved_gb": 33.166015625,
+    "max_allocated_gb": 32.59808301925659
+  }
+}

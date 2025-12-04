@@ -1,0 +1,212 @@
+{
+  "math-only": {
+    "experiment": "math-only",
+    "config": {
+      "math_ratio": 1,
+      "nli_ratio": 0,
+      "learning_rate": 0.0003,
+      "batch_size": 256,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.1202,
+      "math_loss": 1.22823166847229,
+      "nli_acc": 0.16505348955680083,
+      "nli_loss": 2.533432532579471
+    },
+    "best_model": {
+      "best_metric": "math_acc",
+      "best_value": 0.121,
+      "best_step": 4000
+    },
+    "training_time": 2009.0047042369843,
+    "epochs_completed": 3,
+    "total_steps": 4599,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3614134788513184,
+      "reserved_gb": 33.166015625,
+      "max_allocated_gb": 32.59808301925659
+    }
+  },
+  "nli-only": {
+    "experiment": "nli-only",
+    "config": {
+      "math_ratio": 0,
+      "nli_ratio": 1,
+      "learning_rate": 0.0003,
+      "batch_size": 256,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.0155,
+      "math_loss": 1.910195341706276,
+      "nli_acc": 0.8688741721854305,
+      "nli_loss": 0.18186610363996947
+    },
+    "best_model": {
+      "best_metric": "nli_acc",
+      "best_value": 0.881,
+      "best_step": 3000
+    },
+    "training_time": 2549.7265400886536,
+    "epochs_completed": 3,
+    "total_steps": 4599,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3614134788513184,
+      "reserved_gb": 33.166015625,
+      "max_allocated_gb": 32.59808301925659
+    }
+  },
+  "mixed-4-1": {
+    "experiment": "mixed-4-1",
+    "config": {
+      "math_ratio": 4,
+      "nli_ratio": 1,
+      "learning_rate": 0.0003,
+      "batch_size": 48,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.118,
+      "math_loss": 1.2237665978345005,
+      "nli_acc": 0.8553234844625573,
+      "nli_loss": 0.19827294776715884
+    },
+    "best_model": {
+      "best_metric": "math_acc",
+      "best_value": 0.124,
+      "best_step": 5000
+    },
+    "training_time": 2743.920551776886,
+    "epochs_completed": 3,
+    "total_steps": 6135,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3639159202575684,
+      "reserved_gb": 31.056640625,
+      "max_allocated_gb": 30.746903896331787
+    }
+  },
+  "mixed-1-1": {
+    "experiment": "mixed-1-1",
+    "config": {
+      "math_ratio": 1,
+      "nli_ratio": 1,
+      "learning_rate": 0.0003,
+      "batch_size": 128,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.1201,
+      "math_loss": 1.2226855015452904,
+      "nli_acc": 0.8623535404992358,
+      "nli_loss": 0.18770924017026827
+    },
+    "best_model": {
+      "best_metric": "math_acc",
+      "best_value": 0.124,
+      "best_step": 4000
+    },
+    "training_time": 4608.277959108353,
+    "epochs_completed": 3,
+    "total_steps": 9201,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3614134788513184,
+      "reserved_gb": 33.166015625,
+      "max_allocated_gb": 32.59808301925659
+    }
+  },
+  "mixed-3-1": {
+    "experiment": "mixed-3-1",
+    "config": {
+      "math_ratio": 3,
+      "nli_ratio": 1,
+      "learning_rate": 0.0003,
+      "batch_size": 64,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.1172,
+      "math_loss": 1.2270422444981375,
+      "nli_acc": 0.8559347936831381,
+      "nli_loss": 0.19534976673977716
+    },
+    "best_model": {
+      "best_metric": "math_acc",
+      "best_value": 0.135,
+      "best_step": 5000
+    },
+    "training_time": 2917.3871550559998,
+    "epochs_completed": 3,
+    "total_steps": 6135,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3583617210388184,
+      "reserved_gb": 32.69140625,
+      "max_allocated_gb": 32.59539747238159
+    }
+  },
+  "mixed-7-1": {
+    "experiment": "mixed-7-1",
+    "config": {
+      "math_ratio": 7,
+      "nli_ratio": 1,
+      "learning_rate": 0.0003,
+      "batch_size": 32,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.1169,
+      "math_loss": 1.2328588216068646,
+      "nli_acc": 0.8446255731023943,
+      "nli_loss": 0.20732459535743397
+    },
+    "best_model": {
+      "best_metric": "math_acc",
+      "best_value": 0.121,
+      "best_step": 4500
+    },
+    "training_time": 2464.4536502361298,
+    "epochs_completed": 3,
+    "total_steps": 5259,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3614134788513184,
+      "reserved_gb": 33.162109375,
+      "max_allocated_gb": 32.59808301925659
+    }
+  },
+  "mixed-15-1": {
+    "experiment": "mixed-15-1",
+    "config": {
+      "math_ratio": 15,
+      "nli_ratio": 1,
+      "learning_rate": 0.0003,
+      "batch_size": 16,
+      "num_epochs": 3
+    },
+    "final_metrics": {
+      "math_acc": 0.1173,
+      "math_loss": 1.2330159698486327,
+      "nli_acc": 0.8381049414161997,
+      "nli_loss": 0.2192297624697126
+    },
+    "best_model": {
+      "best_metric": "math_acc",
+      "best_value": 0.126,
+      "best_step": 3500
+    },
+    "training_time": 2344.0237917900085,
+    "epochs_completed": 3,
+    "total_steps": 4908,
+    "gpu_memory": {
+      "total_gb": 39.55743408203125,
+      "allocated_gb": 2.3614134788513184,
+      "reserved_gb": 33.16015625,
+      "max_allocated_gb": 32.59808301925659
+    }
+  }
+}
