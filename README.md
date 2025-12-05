@@ -1,12 +1,13 @@
 # Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training
 
-[![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation)
-[![HuggingFace Models](https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow)](https://huggingface.co/MarioBarbeque)
+[![Paper](https://img.shields.io/badge/arXiv-2412.XXXXX-b31b1b)](https://arxiv.org/abs/2412.XXXXX)
+[![Hugging Face Models](https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow)](https://huggingface.co/collections/MarioBarbeque/catastrophic-forgetting-in-mathematical-reasoning)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
 **Research code for:** *Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training*
 
 **Author:** John Graham Reynolds  
-**Institution:** University of Texas at Austin
+**Institution:** The University of Texas at Austin
 
 ## 📋 Overview
 
@@ -29,17 +30,27 @@ We propose and evaluate **mixed training strategies** that interleave mathematic
 
 ## 📊 Results Summary
 
-| Experiment | Math % | NLI % | Math Acc | NLI Acc | Math Δ | NLI Δ |
-|------------|--------|-------|----------|---------|--------|-------|
-| **baseline** | - | - | 3.1% | 81.0% | - | - |
-| **math-only** | 100.0% | 0.0% | 12.0% | 16.5% | +8.9 | -64.5 |
-| **nli-only** | 0.0% | 100.0% | 1.6% | 86.9% | -1.6 | +5.9 |
-| **mixed-1-1** | 50.0% | 50.0% | 12.0% | 86.2% | +8.9 | +5.3 |
-| **mixed-3-1** | 75.0% | 25.0% | 11.7% | 85.6% | +8.6 | +4.6 |
-| **mixed-7-1** | 87.5% | 12.5% | 11.7% | 84.5% | +8.6 | +3.5 |
-| **mixed-15-1** | 93.8% | 6.2% | 11.7% | 83.8% | +8.6 | +2.8 |
+All experiments conducted on Flan-T5-Base (250M parameters):
+
+| Training Strategy | Math % | NLI % | Math Acc | NLI Acc | Math Δ | NLI Δ |
+|-------------------|--------|-------|----------|---------|--------|-------|
+| Baseline (pretrained) | — | — | 3.1% | 81.0% | — | — |
+| **Math-only** | 100% | 0% | 12.0% | **16.5%** ⚠️ | +8.9 | **-64.5** |
+| **NLI-only** | 0% | 100% | 1.6% | 86.9% | -1.5 | +5.9 |
+| **Mixed 1:1** ⭐ | 50% | 50% | **12.0%** | **86.2%** | +8.9 | +5.2 |
+| **Mixed 3:1** | 75% | 25% | 11.7% | 85.6% | +8.6 | +4.6 |
+| **Mixed 7:1** | 87.5% | 12.5% | 11.7% | 84.5% | +8.6 | +3.5 |
+| **Mixed 15:1** | 93.8% | 6.2% | 11.7% | 83.8% | +8.6 | +2.8 |
 
 *Results evaluated on complete validation sets (Math: 10,000 examples; NLI: 9,815 examples)*
+
+**Key Finding:** Mixed training (1:1 ratio) achieves **equivalent** math performance (12.0% vs 12.0%) while **completely eliminating** catastrophic forgetting (86.2% vs 16.5% NLI accuracy).
+
+### Scaling Evidence
+
+For comparison, our Flan-T5-Large (780M parameters) baseline achieves **90.8%** math accuracy—nearly **8× improvement** over Flan-T5-Base, suggesting significant capacity constraints at 250M parameters.
+
+Model: [CyberSolve-LinAlg-1.2](https://huggingface.co/MarioBarbeque/CyberSolve-LinAlg-1.2)
 
 ## 🚀 Quick Start
 
@@ -108,20 +119,6 @@ python run_experiments.py --experiment mixed-1-1
 python run_experiments.py --experiment mixed-3-1
 ```
 
-### Generate Plots
-
-After running experiments, generate publication-ready visualizations:
-
-```bash
-python generate_plots.py --results-dir ./outputs
-```
-
-This creates:
-- `accuracy_comparison.png` - Bar chart comparing all experiments
-- `pareto_frontier.png` - Math vs NLI accuracy scatter plot
-- `performance_change.png` - Delta from baseline
-- `summary.md` - Markdown results table
-
 ### Monitor Training
 
 ```bash
@@ -134,25 +131,59 @@ tensorboard --logdir=./logs
 # - Evaluation accuracy over time
 ```
 
+### Generate Plots
+
+After running experiments, export the tensorboard results to folders `/nli_exports`, `/math_exports` as csv files for each experiment type. The training quick-eval visualizations can then be generated with:
+
+```bash
+python generate_eval_plots.py --nli-dir ./nli_exports --math-dir ./math_exports
+```
+
+OR if you dont want to rerun the training, you can generate the final values found in the research and alrady available on the main branch by running:
+
+```bash
+python generate_eval_plots.py --nli-dir ./tensorboard_exports --math-dir ./tensorboard_exports
+```
+
+The Pareto frontier plot is generated with:
+
+```bash
+python generate_acc_plots.py --results-dir ./outputs
+```
+
+As above, final research results are already populated in this repo if users are not interested in rerunning the trainings.
+
+The `generate_eval_plots.py` script creates:
+- `figures/training_dynamics.pdf` - NLI and Math performance checkpoints during training
+- `figures/training_dynamics.png`
+
+The `generate_acc_plots.py` script creates: 
+- `outputs/accuracy_comparison.png` - Bar chart comparing all experiments
+- `outputs/pareto_frontier.png` - Math vs NLI accuracy scatter plot
+- `outputs/performance_change.png` - Delta from baseline
+- `outputs/summary.md` - Markdown results table
+
 ## 📁 Project Structure
 
 ```
 mathematical_catastrophe_mitigation/
-├── config.py              # Hyperparameters and experiment definitions
-├── data.py                # Dataset loading, preprocessing, mixed dataloaders
-├── train.py               # Training loop with logging and checkpointing
-├── evaluate.py            # Evaluation (model.generate() + accuracy)
-├── utils.py               # Checkpointing, TensorBoard logging, utilities
-├── run_experiments.py     # Main entry point for running experiments
-├── generate_plots.py      # Generate publication-ready plots from results
-├── publish_to_hub.py      # Push trained models to HuggingFace Hub
-├── requirements.txt       # Dependencies
-├── outputs/               # Results, plots, and summaries (generated)
-│   ├── all_results.json   # Aggregated experiment results
+├── config.py                  # Hyperparameters and experiment definitions
+├── data.py                    # Dataset loading, preprocessing, mixed dataloaders
+├── train.py                   # Training loop with logging and checkpointing
+├── evaluate.py                # Evaluation (model.generate() + accuracy)
+├── utils.py                   # Checkpointing, TensorBoard logging, utilities
+├── run_experiments.py         # Main entry point for running experiments
+├── colab.ipynb                # Colab nb with cell outputs of original training runs
+├── generate_eval_plots.py     # Generate quick-eval plots of training dynamics
+├── generate_acc_plots.py      # Generate accuracy plots from results
+├── requirements.txt           # Dependencies
+├── outputs/                   # Results, plots, and summaries (generated)
+│   ├── all_results.json       # Aggregated experiment results
 │   ├── accuracy_comparison.png
 │   ├── pareto_frontier.png
+│   ├── training_dynamics_dual.png
 │   └── summary.md
-└── paper/                 # LaTeX source for research paper
+└── paper/                     # LaTeX source for research paper
     ├── catastrophe_mitigation.tex
     ├── references.bib
     └── compile.sh
@@ -161,7 +192,7 @@ mathematical_catastrophe_mitigation/
 ## 📚 Datasets
 
 ### DeepMind Mathematics (Linear Algebra 1D)
-- **Source:** `MarioBarbeque/DeepMind-LinAlg-1D-train` (pre-tokenized)
+- **Source:** `MarioBarbeque/DeepMind-LinAlg-1D-train` (pre-tokenized version of the 1D Lin Alg split)
 - **Size:** ~392,702 training examples (subsampled to match NLI)
 - **Format:** "Solve 24 = 1601*c - 1605*c for c." → "-6"
 
@@ -183,7 +214,7 @@ dtype = torch.bfloat16
 learning_rate = 3e-4
 batch_size = 256  # Adjusted per experiment for consistent effective batch size
 num_epochs = 3
-gradient_accumulation_steps = 1  # Adjusted per experiment
+gradient_accumulation_steps = 1
 
 # Data
 max_input_length = 128   # Covers 95th percentile of NLI
@@ -210,26 +241,26 @@ If you use this code or findings in your research, please cite:
   title={Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training},
   author={Reynolds, John Graham},
   journal={arXiv preprint},
-  year={2024},
+  year={2025},
   url={https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation}
 }
 ```
 
 ## 📝 License
 
-This project is released under the MIT License. See LICENSE file for details.
+This project is released under the Apache 2.0 License. See LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
-- Wonderful instruction from Greg Durrett
+- Wonderful instruction from Greg Durrett and Krähenbühl
 - Motivation from John Jumper's talk at Vanderbilt University
 - Computational resources provided through Google Colab Pro
 - HuggingFace for model hosting and dataset access
 
 ## 🔗 Links
 
-- **Paper:** [arXiv/PDF](paper/catastrophe_mitigation.pdf)
-- **HuggingFace Models:** [MarioBarbeque](https://huggingface.co/MarioBarbeque)
+- **Paper:** [arXiv/PDF](https://arxiv.org/abs/2412.XXXXX)
+- **HuggingFace Models:** [MarioBarbeque](https://huggingface.co/collections/MarioBarbeque/catastrophic-forgetting-in-mathematical-reasoning)
 - **Repository:** [GitHub](https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation)
 
 ---
