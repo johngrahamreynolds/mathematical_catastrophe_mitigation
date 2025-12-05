@@ -139,7 +139,9 @@ After running experiments, export the tensorboard results to folders `/nli_expor
 python generate_eval_plots.py --nli-dir ./nli_exports --math-dir ./math_exports
 ```
 
-OR if you dont want to rerun the training, you can generate the final values found in the research and alrady available on the main branch by running:
+OR 
+
+If you dont want to rerun the training, you can generate the plots with final research values available in `/tensorboard_exports` by running:
 
 ```bash
 python generate_eval_plots.py --nli-dir ./tensorboard_exports --math-dir ./tensorboard_exports
