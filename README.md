@@ -185,7 +185,8 @@ mathematical_catastrophe_mitigation/
 │   ├── pareto_frontier.png
 │   ├── training_dynamics_dual.png
 │   └── summary.md
-└── paper/                     # LaTeX source for research paper
+└── paper/                     # LaTeX source for research paper and precompiled PDF
+    ├── catastrophe_mitigation.pdf
     ├── catastrophe_mitigation.tex
     ├── references.bib
     └── compile.sh
@@ -254,7 +255,7 @@ This project is released under the Apache 2.0 License. See LICENSE file for deta
 
 ## 🙏 Acknowledgments
 
-- Wonderful instruction from Greg Durrett and Krähenbühl
+- Wonderful instruction from Greg Durrett and Philipp Krähenbühl
 - Motivation from John Jumper's talk at Vanderbilt University
 - Computational resources provided through Google Colab Pro
 - HuggingFace for model hosting and dataset access
