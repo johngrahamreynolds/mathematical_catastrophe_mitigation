@@ -79,15 +79,15 @@ John Graham Reynolds \\
 Large language models (LLMs) pretrained on diverse corpora have demonstrated remarkable capabilities across a wide 
 range of natural language understanding and generation tasks. However, when these models are finetuned for specialized 
 domains such as mathematical reasoning, they often exhibit \emph{catastrophic forgetting}---a phenomenon where 
-performance on previously learned tasks degrades significantly \cite{kirkpatrick2017overcoming, french1999catastrophic}.
+performance on previously learned tasks degrades significantly (\cite{kirkpatrick2017overcoming, french1999catastrophic}).
 
 This forgetting poses a critical challenge for deploying specialized models in production settings where maintaining 
 general language understanding capabilities is essential. For instance, a model finetuned for mathematical problem-solving 
 should retain its ability to understand natural language, perform reasoning, and handle diverse linguistic phenomena.
 
 In this work, we investigate catastrophic forgetting in the context of mathematical reasoning finetuning. Specifically, 
-we finetune Flan-T5-Base \cite{chung2022scaling} on the DeepMind Mathematics dataset \cite{saxton2019analyzing} and measure 
-the resulting degradation on the MultiNLI natural language understanding task \cite{williams2018multinli}. Our experiments 
+we finetune Flan-T5-Base (\cite{chung2022scaling}) on the DeepMind Mathematics dataset (\cite{saxton2019analyzing}) and measure 
+the resulting degradation on the MultiNLI natural language understanding task (\cite{williams2018multinli}). Our experiments 
 reveal severe catastrophic forgetting: math-only training improves mathematical reasoning accuracy from 3.1\% to 12.0\%, 
 but causes NLI accuracy to drop dramatically from 81.0\% to 16.5\%.
 
@@ -111,43 +111,43 @@ mathematical and NLI examples during training. Our key contributions are:
 
 \subsection{Catastrophic Forgetting}
 
-Catastrophic forgetting was first identified in neural networks by \citet{mccloskey1989catastrophic} and has been 
-extensively studied in the context of continual learning \cite{parisi2019continual, delange2021continual}. The 
+Catastrophic forgetting was first identified in neural networks by (\cite{mccloskey1989catastrophic}) and has been 
+extensively studied in the context of continual learning (\cite{parisi2019continual, delange2021continual}). The 
 phenomenon occurs when neural networks, optimized for a new task, lose previously acquired knowledge.
 
 Several approaches have been proposed to mitigate catastrophic forgetting, including regularization-based methods 
-\cite{kirkpatrick2017overcoming, zenke2017continual} and replay-based methods \cite{rebuffi2017icarl}. However, most 
+(\cite{kirkpatrick2017overcoming, zenke2017continual}) and replay-based methods (\cite{rebuffi2017icarl}). However, most 
 of this work has focused on computer vision tasks, with less attention paid to language models and specialized 
 finetuning scenarios.
 
 \subsection{Mathematical Reasoning in Language Models}
 
 Recent work has demonstrated that language models can be finetuned for mathematical reasoning tasks 
-\cite{cobbe2021training, lewkowycz2022solving, hendrycks2021measuring}. The DeepMind Mathematics dataset 
-\cite{saxton2019analyzing} has become a standard benchmark for evaluating mathematical reasoning capabilities. 
+(\cite{cobbe2021training, lewkowycz2022solving, hendrycks2021measuring}). The DeepMind Mathematics dataset 
+(\cite{saxton2019analyzing}) has become a standard benchmark for evaluating mathematical reasoning capabilities. 
 However, these studies have primarily focused on improving mathematical performance without considering the impact 
 on general language understanding.
 
 \subsection{Mixed Training and Multi-Task Learning}
 
-Multi-task learning \cite{caruana1997multitask} has long been recognized as a way to improve generalization and 
+Multi-task learning (\cite{caruana1997multitask}) has long been recognized as a way to improve generalization and 
 prevent overfitting. In the context of language models, mixed training has been used in instruction tuning 
-\cite{chung2022scaling, wei2022finetuned} to improve zero-shot generalization. However, the specific application 
+(\cite{chung2022scaling, wei2022finetuned}) to improve zero-shot generalization. However, the specific application 
 of mixed training to mitigate catastrophic forgetting during specialized finetuning has received less attention.
 
 \section{Methodology}
 
 \subsection{Model and Datasets}
 
-We use Flan-T5-Base \cite{chung2022scaling}, a 250M parameter encoder-decoder language model that has been 
+We use Flan-T5-Base (\cite{chung2022scaling}), a 250M parameter encoder-decoder language model that has been 
 instruction-tuned on a diverse collection of tasks. This model provides a strong baseline for both natural language 
 understanding and quantitative reasoning problems.
 
-\textbf{Mathematical Reasoning Dataset:} We use the DeepMind Mathematics dataset \cite{saxton2019analyzing}, specifically the linear algebra 1D subset. 
+\textbf{Mathematical Reasoning Dataset:} We use the DeepMind Mathematics dataset (\cite{saxton2019analyzing}), specifically the linear algebra 1D subset. 
 This dataset contains mathematical problems of the form ``Solve $24 = 1601c - 1605c$ for $c$.'' with numerical answers. 
 We subsample the training set to 392,702 examples to match the size of our NLI dataset, ensuring fair comparison across experiments.
 
-\textbf{Natural Language Understanding Dataset:} We use the MultiNLI (MNLI) dataset \cite{williams2018multinli}, which 
+\textbf{Natural Language Understanding Dataset:} We use the MultiNLI (MNLI) dataset (\cite{williams2018multinli}), which 
 consists of premise-hypothesis pairs labeled as entailment, contradiction, or neutral. The dataset contains 392,702 
 training examples and 9,815 validation examples (matched split). We format examples as ``mnli premise: \{premise\} 
 hypothesis: \{hypothesis\}'' to match Flan-T5's instruction format.
@@ -351,7 +351,7 @@ constraints of this 250M parameter model.
 The consistent final performance across mixing ratios (11.7-12.0\%) contrasts with 
 preliminary evidence from larger models. A Flan-T5-Large model (780M parameters) 
 trained only on the full 2M example 1D linear algebra subset of the DeepMind Mathematics 
-dataset achieves 90.8\% accuracy~\cite{reynolds2024cybersolve}—nearly 8× higher 
+dataset achieves 90.8\% accuracy (\cite{reynolds2024cybersolve})—nearly 8× higher 
 than our Flan-T5-Base results (12.0\%). This dramatic scaling effect suggests 
 that larger models possess substantially greater capacity for mathematical reasoning. 
 In such higher-capacity regimes, mixed training strategies may reveal additional benefits 
