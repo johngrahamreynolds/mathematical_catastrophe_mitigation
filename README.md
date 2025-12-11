@@ -91,12 +91,12 @@ print(tokenizer.decode(outputs[0], skip_special_tokens=True))  # "yes"
 
 ### Available Models
 
-- `MarioBarbeque/flan-t5-base-math-only-catastrophic` - Math-only training (best checkpoint)
-- `MarioBarbeque/flan-t5-base-nli-only-catastrophic` - NLI-only training (best checkpoint)
-- `MarioBarbeque/flan-t5-base-mixed-1-1-catastrophic` - Mixed training 1:1 (best checkpoint)
-- `MarioBarbeque/flan-t5-base-mixed-3-1-catastrophic` - Mixed training 3:1 (best checkpoint)
-- `MarioBarbeque/flan-t5-base-mixed-7-1-catastrophic` - Mixed training 7:1 (best checkpoint)
-- `MarioBarbeque/flan-t5-base-mixed-15-1-catastrophic` - Mixed training 15:1 (best checkpoint)
+- `MarioBarbeque/flan-t5-base-math-only-catastrophic` - Math-only training (final checkpoint)
+- `MarioBarbeque/flan-t5-base-nli-only-catastrophic` - NLI-only training (final checkpoint)
+- `MarioBarbeque/flan-t5-base-mixed-1-1-catastrophic` - Mixed training 1:1 (final checkpoint)
+- `MarioBarbeque/flan-t5-base-mixed-3-1-catastrophic` - Mixed training 3:1 (final checkpoint)
+- `MarioBarbeque/flan-t5-base-mixed-7-1-catastrophic` - Mixed training 7:1 (final checkpoint)
+- `MarioBarbeque/flan-t5-base-mixed-15-1-catastrophic` - Mixed training 15:1 (final checkpoint)
 
 ## 🔬 Reproducing Experiments
 
