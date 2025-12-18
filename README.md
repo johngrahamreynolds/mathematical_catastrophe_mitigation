@@ -1,6 +1,6 @@
 # Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training
 
-[![Paper](https://img.shields.io/badge/arXiv-2512.13706)]([https://arxiv.org/abs/2512.13706](https://arxiv.org/abs/2512.13706))
+[![Paper](https://img.shields.io/badge/arXiv-2512.13706-b31b1b)]([https://arxiv.org/abs/2512.13706](https://arxiv.org/abs/2512.13706))
 [![Hugging Face Models](https://img.shields.io/badge/🤗%20HuggingFace-Models-yellow)](https://huggingface.co/collections/MarioBarbeque/catastrophic-forgetting-in-mathematical-reasoning)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
