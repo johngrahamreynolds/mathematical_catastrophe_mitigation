@@ -264,7 +264,6 @@ This project is released under the Apache 2.0 License. See LICENSE file for deta
 
 - **Paper:** [arXiv](https://arxiv.org/abs/2512.13706)
 - **HuggingFace Models:** [MarioBarbeque](https://huggingface.co/collections/MarioBarbeque/catastrophic-forgetting-in-mathematical-reasoning)
-- **Repository:** [GitHub](https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation)
 
 ---
 
