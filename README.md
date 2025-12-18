@@ -240,10 +240,10 @@ Or view the pre-compiled PDF: [`paper/catastrophe_mitigation.pdf`](paper/catastr
 If you use this code or findings in your research, please cite:
 
 ```bibtex
-@article{reynolds2024mitigating,
+@article{reynolds2025catastrophic,
   title={Mitigating Catastrophic Forgetting in Mathematical Reasoning Finetuning through Mixed Training},
   author={Reynolds, John Graham},
-  journal={arXiv preprint},
+  journal={arXiv preprint arXiv:2512.13706},
   year={2025},
   url={https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation}
 }
@@ -262,7 +262,7 @@ This project is released under the Apache 2.0 License. See LICENSE file for deta
 
 ## 🔗 Links
 
-- **Paper:** [arXiv/PDF](https://arxiv.org/abs/2412.XXXXX)
+- **Paper:** [arXiv](https://arxiv.org/abs/2512.13706)
 - **HuggingFace Models:** [MarioBarbeque](https://huggingface.co/collections/MarioBarbeque/catastrophic-forgetting-in-mathematical-reasoning)
 - **Repository:** [GitHub](https://github.com/johngrahamreynolds/mathematical_catastrophe_mitigation)
 
